@@ -1,0 +1,32 @@
+<Project>
+
+  <PropertyGroup>
+    <UseWPF>True</UseWPF>
+    <AssetTargetFallback>$(ParentTargetFramework)</AssetTargetFallback>
+    <ValidateFrameworkCompatibility>False</ValidateFrameworkCompatibility>
+    <WindowsReferencesDirectory>$(ProgramFiles)\Windows Kits\10\References\$(TargetPlatformVersion)\</WindowsReferencesDirectory>
+    <WindowsUnionMetadataPath>$(MSBuildProgramFiles32)\Windows Kits\10\UnionMetadata\$(TargetPlatformVersion)\Windows.winmd</WindowsUnionMetadataPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(ParentProjectName)' != ''">
+    <ParentProjectOutputPath>..\$(ParentProjectName)\bin\$(Configuration)\$(ParentTargetFramework)\</ParentProjectOutputPath>
+    <OutputPath>$(ParentProjectOutputPath)Design\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(UseXamlDesignerProcessIsolation)' == 'true'">
+    <DefineConstants>$(DefineConstants);VS_DESIGNER_PROCESS_ISOLATION</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

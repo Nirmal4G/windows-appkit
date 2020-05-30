@@ -1,6 +1,16 @@
 <Project>
 
+  <!-- Same as in 'Windows.Toolkit.Uwp.Build.targets' -->
   <PropertyGroup>
+    <TargetPlatformVersion>$(TargetPlatformBaseVersion).$(TargetPlatformRevision).0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>$(TargetPlatformBaseVersion).$(TargetPlatformMinRevision).0</TargetPlatformMinVersion>
+    <DebugType Condition="'$(DebugType)' == ''">Portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PlatformTarget>x86</PlatformTarget>
+    <!--<Platforms>SurfaceIsolatedDesigner;ProcessIsolatedDesigner</Platforms>-->
+    <ParentTargetFramework>uap$(TargetPlatformBaseVersion).$(TargetPlatformMinRevision)</ParentTargetFramework>
     <BaseIntermediateOutputPath>$([MSBuild]::EnsureTrailingSlash($([MSBuild]::ValueOrDefault('$(BaseIntermediateOutputPath)', 'obj'))))</BaseIntermediateOutputPath>
   </PropertyGroup>
 
@@ -17,5 +27,68 @@
     </When>
     <Otherwise/>
   </Choose>
+
+  <ItemGroup>
+    <AppDesigner Include="Properties\"/>
+    <EmbeddedResource Include="Icons\$(ParentProjectName).*.icon.png"/>
+    <EmbeddedResource Include="$(ParentProjectOutputPath)$(ParentProjectName).xml">
+      <Link>$(ParentProjectName).xml</Link>
+      <Visible>False</Visible>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Runtime"/>
+    <Reference Include="System.ObjectModel"/>
+    <Reference Include="System.Runtime.WindowsRuntime"/>
+    <Reference Include="System.Runtime.WindowsRuntime.UI.Xaml"/>
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseXamlDesignerProcessIsolation)' != 'true'">
+    <Reference Include="Microsoft.VisualStudio.DesignTools.Extensibility">
+      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.DesignTools.Interaction">
+      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseXamlDesignerProcessIsolation)' == 'true'">
+    <Reference Include="Microsoft.Windows.Design.Extensibility">
+      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Design.Interaction">
+      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseXamlDesignerProcessIsolation)' == 'true' AND '$(ExcludeRestorePackageImports)' != 'true'">
+    <ProjectReference Include="..\$(ParentProjectName)\$(ParentProjectName).csproj" Condition="'$(ParentProjectName)' != ''">
+      <Private>False</Private>
+      <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup Label="WinRT References">
+    <Reference Include="Windows">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(WindowsUnionMetadataPath)</HintPath>
+    </Reference>
+    <Reference Include="Windows.Foundation.FoundationContract">
+      <Private>False</Private>
+      <Aliases>WindowsRuntime</Aliases>
+      <HintPath>$(WindowsReferencesDirectory)Windows.Foundation.FoundationContract\3.0.0.0\Windows.Foundation.FoundationContract.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <Private>False</Private>
+      <Aliases>WindowsRuntime</Aliases>
+      <HintPath>$(WindowsReferencesDirectory)Windows.Foundation.UniversalApiContract\7.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>
