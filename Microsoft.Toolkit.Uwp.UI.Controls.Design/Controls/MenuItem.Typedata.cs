@@ -6,6 +6,12 @@ using System;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
 {
+#if VS_DESIGNER_PROCESS_ISOLATION
+    internal static partial class ControlTypes
+    {
+        internal static readonly Type MenuItem = typeof(MenuItem);
+    }
+#else
     internal static partial class ControlTypes
     {
         internal const string MenuItem = RootNamespace + "." + nameof(MenuItem);
@@ -18,4 +24,5 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
         internal const string IsOpened = nameof(IsOpened);
         internal const string Items = nameof(Items);
     }
+#endif
 }

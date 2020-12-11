@@ -6,6 +6,12 @@ using System;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
 {
+#if VS_DESIGNER_PROCESS_ISOLATION
+    internal static partial class ControlTypes
+    {
+        internal static readonly Type MarkdownTextBlock = typeof(MarkdownTextBlock);
+    }
+#else
     internal static partial class ControlTypes
     {
         internal const string MarkdownTextBlock = RootNamespace + "." + nameof(MarkdownTextBlock);
@@ -43,4 +49,5 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
         internal const string Text = nameof(Text);
         internal const string TextWrapping = nameof(TextWrapping);
     }
+#endif
 }

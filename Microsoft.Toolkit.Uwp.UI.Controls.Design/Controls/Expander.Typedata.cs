@@ -6,6 +6,12 @@ using System;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
 {
+#if VS_DESIGNER_PROCESS_ISOLATION
+    internal static partial class ControlTypes
+    {
+        internal static readonly Type Expander = typeof(Expander);
+    }
+#else
     internal static partial class ControlTypes
     {
         internal const string Expander = RootNamespace + "." + nameof(Expander);
@@ -18,4 +24,5 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
         internal const string HeaderTemplate = nameof(HeaderTemplate);
         internal const string IsExpanded = nameof(IsExpanded);
     }
+#endif
 }

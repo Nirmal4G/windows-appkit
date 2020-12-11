@@ -6,6 +6,12 @@ using System;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
 {
+#if VS_DESIGNER_PROCESS_ISOLATION
+    internal static partial class ControlTypes
+    {
+        internal static readonly Type DropShadowPanel = typeof(DropShadowPanel);
+    }
+#else
     internal static partial class ControlTypes
     {
         internal const string DropShadowPanel = RootNamespace + "." + nameof(DropShadowPanel);
@@ -20,4 +26,5 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
         internal const string OffsetZ = nameof(OffsetZ);
         internal const string ShadowOpacity = nameof(ShadowOpacity);
     }
+#endif
 }

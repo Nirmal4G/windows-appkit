@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{67FE47A0-CA93-4680-B770-A0A48C1DBC40}</ProjectGuid>
+    <ProjectGuid>{618C1EA2-CAA6-4ED8-A53B-E8F4B63AEDB8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Toolkit.Uwp.UI.Controls.Design</RootNamespace>
-    <AssemblyName>Microsoft.Toolkit.Uwp.UI.Controls.Markdown.DesignTools</AssemblyName>
+    <AssemblyName>Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.Design</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -16,14 +16,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\Microsoft.Toolkit.Uwp.UI.Controls.Markdown\bin\Debug\uap10.0.17763\Design\</OutputPath>
+    <OutputPath>..\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\bin\Debug\uap10.0.17763\Design\</OutputPath>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>..\Microsoft.Toolkit.Uwp.UI.Controls.Markdown\bin\Release\uap10.0.17763\Design\</OutputPath>
+    <OutputPath>..\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\bin\Release\uap10.0.17763\Design\</OutputPath>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <Optimize>true</Optimize>
@@ -31,17 +31,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssetTargetFallback>$(AssetTargetFallback);uap10.0.17763</AssetTargetFallback>
+    <DefineConstants>$(DefineConstants);VS_DESIGNER_PROCESS_ISOLATION</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Runtime" />
     <Reference Include="System.ObjectModel" />
     <Reference Include="System.Runtime.WindowsRuntime" />
     <Reference Include="System.Runtime.InteropServices.WindowsRuntime" />
-    <Reference Include="Microsoft.VisualStudio.DesignTools.Extensibility">
+    <Reference Include="Microsoft.Windows.Design.Extensibility">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.DesignTools.Interaction">
+    <Reference Include="Microsoft.Windows.Design.Interaction">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -59,6 +60,12 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.csproj" Condition="'$(ExcludeRestorePackageImports)' != 'true'">
+      <Project>{daeb9cec-c817-33b2-74b2-bc379380db72}</Project>
+      <Name>Microsoft.Toolkit.Uwp.UI.Controls.DataGrid</Name>
+      <Private>False</Private>
+      <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup Label="WinRT References">
     <Reference Include="System.Xaml" />
@@ -78,8 +85,8 @@
     <Compile Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Design\Common\Constants.cs" Link="Common\Constants.cs" />
     <Compile Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Design\Common\MetadataRegistrationBase.cs" Link="Common\MetadataRegistrationBase.cs" />
     <Compile Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Design\Common\PlatformTypes.cs" Link="Common\PlatformTypes.cs" />
-    <Compile Include="Controls\MarkdownTextBlock.Metadata.cs" />
-    <Compile Include="Controls\MarkdownTextBlock.Typedata.cs" />
+    <Compile Include="Controls\DataGrid.Metadata.cs" />
+    <Compile Include="Controls\DataGrid.Typedata.cs" />
     <Compile Include="MetadataRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -96,8 +103,8 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Markdown\bin\$(Configuration)\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.xml">
-      <Link>Microsoft.Toolkit.Uwp.UI.Controls.Markdown.xml</Link>
+    <EmbeddedResource Include="..\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\bin\$(Configuration)\uap10.0.17763\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xml">
+      <Link>Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.xml</Link>
       <Visible>False</Visible>
     </EmbeddedResource>
   </ItemGroup>

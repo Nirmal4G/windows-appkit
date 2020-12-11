@@ -6,6 +6,12 @@ using System;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
 {
+#if VS_DESIGNER_PROCESS_ISOLATION
+    internal static partial class ControlTypes
+    {
+        internal static readonly Type GridSplitter = typeof(GridSplitter);
+    }
+#else
     internal static partial class ControlTypes
     {
         internal const string GridSplitter = RootNamespace + "." + nameof(GridSplitter);
@@ -22,4 +28,5 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
         internal const string ResizeBehavior = nameof(ResizeBehavior);
         internal const string ResizeDirection = nameof(ResizeDirection);
     }
+#endif
 }

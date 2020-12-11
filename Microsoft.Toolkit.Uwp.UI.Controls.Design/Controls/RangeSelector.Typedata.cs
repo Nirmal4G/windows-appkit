@@ -6,6 +6,12 @@ using System;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
 {
+#if VS_DESIGNER_PROCESS_ISOLATION
+    internal static partial class ControlTypes
+    {
+        internal static readonly Type RangeSelector = typeof(RangeSelector);
+    }
+#else
     internal static partial class ControlTypes
     {
         internal const string RangeSelector = RootNamespace + "." + nameof(RangeSelector);
@@ -18,4 +24,5 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
         internal const string RangeMax = nameof(RangeMax);
         internal const string RangeMin = nameof(RangeMin);
     }
+#endif
 }

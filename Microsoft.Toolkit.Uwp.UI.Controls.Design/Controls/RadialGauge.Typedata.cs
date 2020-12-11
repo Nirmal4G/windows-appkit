@@ -6,6 +6,12 @@ using System;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
 {
+#if VS_DESIGNER_PROCESS_ISOLATION
+    internal static partial class ControlTypes
+    {
+        internal static readonly Type RadialGauge = typeof(RadialGauge);
+    }
+#else
     internal static partial class ControlTypes
     {
         internal const string RadialGauge = RootNamespace + "." + nameof(RadialGauge);
@@ -35,4 +41,5 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
         internal const string Value = nameof(Value);
         internal const string ValueStringFormat = nameof(ValueStringFormat);
     }
+#endif
 }

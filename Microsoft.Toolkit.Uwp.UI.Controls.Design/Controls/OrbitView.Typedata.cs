@@ -6,6 +6,12 @@ using System;
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
 {
+#if VS_DESIGNER_PROCESS_ISOLATION
+    internal static partial class ControlTypes
+    {
+        internal static readonly Type OrbitView = typeof(OrbitView);
+    }
+#else
     internal static partial class ControlTypes
     {
         internal const string OrbitView = RootNamespace + "." + nameof(OrbitView);
@@ -25,4 +31,5 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
         internal const string OrbitsEnabled = nameof(OrbitsEnabled);
         internal const string OrbitThickness = nameof(OrbitThickness);
     }
+#endif
 }

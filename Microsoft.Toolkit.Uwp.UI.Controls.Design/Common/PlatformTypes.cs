@@ -5,8 +5,13 @@
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+
+#if VS_DESIGNER_PROCESS_ISOLATION
+using Microsoft.Windows.Design.Metadata;
+#else
 using Microsoft.VisualStudio.DesignTools.Extensibility;
 using Microsoft.VisualStudio.DesignTools.Extensibility.Metadata;
+#endif
 
 namespace Microsoft.Toolkit.Uwp.Design.Types
 {

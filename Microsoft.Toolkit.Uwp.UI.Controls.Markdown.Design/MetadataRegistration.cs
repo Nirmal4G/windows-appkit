@@ -29,12 +29,12 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Design
             // must be the same as runtime assembly's main namespace (t.Namespace)
             // plus .Design.
 #if VS_DESIGNER_PROCESS_ISOLATION
-            Type t = typeof(GridSplitter);
+            Type t = typeof(MarkdownTextBlock);
             AssemblyName an = t.Assembly.GetName();
             AssemblyFullName = an.FullName;
             XmlResourceName = t.Namespace + ".Design." + an.Name + ".xml";
 #else
-            var AssemblyName = ControlTypes.RootNamespace;
+            var AssemblyName = ControlTypes.RootNamespace + ".Markdown";
             AssemblyFullName = $"{AssemblyName}, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null";
             XmlResourceName = $"{AssemblyName}.Design.{AssemblyName}.xml";
 #endif
