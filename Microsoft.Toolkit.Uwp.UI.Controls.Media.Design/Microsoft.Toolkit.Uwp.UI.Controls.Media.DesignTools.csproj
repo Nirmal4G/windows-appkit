@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
@@ -6,14 +6,14 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyTitle>Windows Community Toolkit - Markdown Control (Design)</AssemblyTitle>
-    <Description>Design time support for Windows Community Toolkit Markdown Control</Description>
+    <AssemblyTitle>Windows Community Toolkit - Media Controls (Design)</AssemblyTitle>
+    <Description>Design time support for Windows Community Toolkit Media Controls</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Core.Design\Common\*.cs" LinkBase="Common" />
   </ItemGroup>
 
-  <Import Project="$(BuildToolsDirectory)Windows.Toolkit.VisualStudio.Design.targets" />
+  <Import Project="$(MSBuildThisFileDirectory)..\build\Windows.Toolkit.VisualStudio.Design.targets" />
 
 </Project>

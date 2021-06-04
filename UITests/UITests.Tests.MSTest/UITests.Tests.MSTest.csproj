@@ -19,7 +19,7 @@
   <ItemGroup>
     <PackageReference Condition="'$(TargetFramework)' == 'netcoreapp3.1'"
                   Include="Microsoft.Windows.SDK.Contracts"
-                  Version="10.0.19041.0" />
+                  Version="10.0.19041.1" />
 
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="MUXTestInfra.MSTest" Version="0.0.4" />

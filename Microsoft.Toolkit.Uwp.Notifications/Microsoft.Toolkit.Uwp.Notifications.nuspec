@@ -2,7 +2,7 @@
   <metadata>
     <id>Microsoft.Toolkit.Uwp.Notifications</id>
     <version>$version$</version>
-    <title>Windows Community Toolkit Notifications</title>
+    <title>Windows Community Toolkit - Notifications</title>
     <authors>Microsoft.Toolkit,dotnetfoundation</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <license type="expression">MIT</license>
